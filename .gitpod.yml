@@ -1,0 +1,22 @@
+# Image of workspace. Learn more: https://www.gitpod.io/docs/configure/workspaces/workspace-image
+image:
+    file: .gitpod.Dockerfile
+
+# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
+tasks:
+    - init: gradle build
+      command: gradle run
+    - init: mvn package
+      command: mvn exec:java
+    - command: export DEV_ENVIRONMENT_HOST=`gp url 3000` && java <application-entry>
+
+
+# List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
+ports:
+    - port: 3000
+      onOpen: open-browser
+
+# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
+vscode:
+    extensions:
+        - vscjava.vscode-java-pack
